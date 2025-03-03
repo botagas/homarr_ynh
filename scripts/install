@@ -20,9 +20,10 @@ ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
 authsecret=$(openssl rand -hex 32)
+secretkey=$(openssl rand -hex 32)
 cat > "$install_dir/.env" <<EOL
 AUTH_SECRET="$authsecret"
-SECRET_ENCRYPTION_KEY=''
+SECRET_ENCRYPTION_KEY=$secretkey
 LOG_LEVEL='info'
 DB_DRIVER='better-sqlite3'
 DB_URL='$install_dir/db.sqlite'
@@ -38,14 +39,12 @@ ynh_config_add_nginx
 
 ynh_config_add_systemd
 
-yunohost service add $app --description="Customizable browser's home page" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="Customizable browser's home page"
 
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
 ynh_script_progression "Adding $app's configuration..."
-
-ynh_config_add --template=".env" --destination="$install_dir/.env"
 
 #=================================================
 # INSTALL HOMARR
