@@ -19,8 +19,9 @@ ynh_nodejs_install
 ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
+authsecret=$(openssl rand -hex 32)
 cat > "$install_dir/.env" <<EOL
-AUTH_SECRET="supersecret"
+AUTH_SECRET="$authsecret"
 SECRET_ENCRYPTION_KEY=''
 LOG_LEVEL='info'
 DB_DRIVER='better-sqlite3'
