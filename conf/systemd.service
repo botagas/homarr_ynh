@@ -1,5 +1,6 @@
 [Unit]
 Description=Homarr: customizable home page
+Requires=redis-server.service
 After=network.target
 
 [Service]
