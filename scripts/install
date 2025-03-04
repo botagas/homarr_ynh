@@ -36,6 +36,8 @@ yunohost service add $app --description="Customizable browser's home page"
 #=================================================
 ynh_script_progression "Adding $app's configuration..."
 
+ynh_config_add --template=".env" --destination="$install_dir/.env"
+
 #=================================================
 # INSTALL HOMARR
 #=================================================
