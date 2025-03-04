@@ -4,7 +4,7 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 secret=$(ynh_string_random --length=24)
-timezone=$(cat /etc/timezone)
+secretkey=$(ynh_string_random --length=32)
 
 #=================================================
 # INSTALL DEPENDENCIES
@@ -19,16 +19,6 @@ ynh_nodejs_install
 ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
-authsecret=$(openssl rand -hex 32)
-secretkey=$secret
-cat > "$install_dir/.env" <<EOL
-AUTH_SECRET="$authsecret"
-SECRET_ENCRYPTION_KEY=$secretkey
-LOG_LEVEL='info'
-DB_DRIVER='better-sqlite3'
-DB_URL='$install_dir/db.sqlite'
-TURBO_TELEMETRY_DISABLED=1
-EOL
 
 #=================================================
 # APP INITIAL CONFIGURATION
