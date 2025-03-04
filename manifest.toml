@@ -39,10 +39,10 @@ ram.runtime = "50M"
     default = "visitors"
 
 [resources]
-        [resources.sources.main]
-        url = "https://github.com/homarr-labs/homarr/archive/refs/tags/v1.8.0.tar.gz"
-        sha256 = "3c139e59d6b7a86801824764507b3ab54af156c9911703705186780bb6f9e8d3"
-        autoupdate.strategy = "latest_github_tag"
+    [resources.sources.main]
+    url = "https://github.com/homarr-labs/homarr/archive/refs/tags/v1.8.0.tar.gz"
+    sha256 = "3c139e59d6b7a86801824764507b3ab54af156c9911703705186780bb6f9e8d3"
+    autoupdate.strategy = "latest_github_tag"
 
     [resources.ports]
 
