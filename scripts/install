@@ -20,7 +20,7 @@ ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
 authsecret=$(openssl rand -hex 32)
-secretkey=$(openssl rand -hex 32)
+secretkey=$secret
 cat > "$install_dir/.env" <<EOL
 AUTH_SECRET="$authsecret"
 SECRET_ENCRYPTION_KEY=$secretkey
