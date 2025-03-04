@@ -52,8 +52,8 @@ ynh_script_progression "Adding $app's configuration..."
 ynh_script_progression "Building the app..."
 
 pushd $install_dir
-    # ynh_hide_warnings corepack enable
-    # ynh_hide_warnings corepack prepare pnpm@latest --activate
+    ynh_hide_warnings corepack enable
+    ynh_hide_warnings corepack prepare pnpm@latest --activate
     # ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 npm install
     ynh_hide_warnings ynh_exec_as_app npm install
     ynh_hide_warnings ynh_exec_as_app npm run db:migration:sqlite:run
