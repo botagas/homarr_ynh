@@ -5,7 +5,7 @@ source /usr/share/yunohost/helpers
 
 secret=$(ynh_string_random --length=24)
 # secretkey=$(ynh_string_random --length=64)
-secretkey=be5b9f558c6059c22002640a2e4e88fa7c6475725ac625c77cb9f4a845ec1578
+secretkey=$(openssl rand -hex 32)
 #=================================================
 # INSTALL DEPENDENCIES
 #=================================================
