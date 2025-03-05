@@ -45,14 +45,14 @@ ynh_config_add --template=".env" --destination="$install_dir/.env"
 ynh_script_progression "Building the app..."
 
 pushd $install_dir
-    ynh_hide_warnings ynh_exec_as_app mkdir -p database
-    ynh_hide_warnings ynh_exec_as_app corepack enable
-    ynh_hide_warnings ynh_exec_as_app corepack prepare pnpm@latest --activate
-    ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 pnpm install
-    ynh_hide_warnings ynh_exec_as_app NODE_ENV=production pnpm build
-    ynh_hide_warnings ynh_exec_as_app pnpm run db:migration:sqlite:run
-    ynh_hide_warnings ynh_exec_as_app mkdir -p build
-    ynh_hide_warnings ynh_exec_as_app cp ./node_modules/better-sqlite3/build/Release/better_sqlite3.node ./build/better_sqlite3.node
+    ynh_hide_warnings mkdir -p database
+    ynh_hide_warnings corepack enable
+    ynh_hide_warnings corepack prepare pnpm@latest --activate
+    ynh_hide_warnings COREPACK_ENABLE_DOWNLOAD_PROMPT=0 pnpm install
+    ynh_hide_warnings NODE_ENV=production pnpm build
+    ynh_hide_warnings pnpm run db:migration:sqlite:run
+    ynh_hide_warnings mkdir -p build
+    ynh_hide_warnings cp ./node_modules/better-sqlite3/build/Release/better_sqlite3.node ./build/better_sqlite3.node
     chown -R "$app:$app" "$install_dir"
 popd
 
