@@ -45,8 +45,8 @@ ynh_config_add --template=".env" --destination="$install_dir/.env"
 ynh_script_progression "Building the app..."
 
 pushd $install_dir
-  ynh_hide_warnings ynh_exec_as_app mkdir -p database
-  ynh_hide_warnings ynh_exec_as_app touch database/db.sqlite
+  # ynh_hide_warnings ynh_exec_as_app mkdir -p database # TESTING: Creating database dir to avoid potential perm issues
+  # ynh_hide_warnings ynh_exec_as_app touch database/db.sqlite # TESTING: Creating db file to avoid potential perm issues
   ynh_hide_warnings corepack enable
   ynh_hide_warnings corepack prepare pnpm@latest --activate
   ynh_hide_warnings corepack use pnpm@latest
@@ -55,7 +55,7 @@ pushd $install_dir
   ynh_hide_warnings ynh_exec_as_app NODE_ENV=production pnpm build
   ynh_hide_warnings ynh_exec_as_app mkdir -p build
   ynh_hide_warnings ynh_exec_as_app cp ./node_modules/better-sqlite3/build/Release/better_sqlite3.node ./build/better_sqlite3.node
-  ynh_hide_warnings ynh_exec_as_app ln -s "apps/.next" ".next"
+  ynh_hide_warnings ynh_exec_as_app ln -s "apps/.next" ".next" # Testing by linking .next dir, because nextjs seems to be checking $install_dir/.next instead of $install_dir/apps/.next
   chown -R "$app:$app" "$install_dir"
 popd
 
