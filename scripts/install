@@ -57,8 +57,8 @@ pushd $install_dir
   ynh_hide_warnings ynh_exec_as_app NODE_ENV=production pnpm build
   ynh_hide_warnings ynh_exec_as_app mkdir -p build
   ynh_hide_warnings ynh_exec_as_app cp ./node_modules/better-sqlite3/build/Release/better_sqlite3.node ./build/better_sqlite3.node
-# TESTING: linking .next dir, because nextjs seems to be checking $install_dir/.next instead of $install_dir/apps/.next
-  # ynh_hide_warnings ynh_exec_as_app ln -s "apps/.next" ".next"
+# TESTING: linking .next dir, because nextjs seems to be checking $install_dir/.next instead of $install_dir/apps/nextjs/.next
+  ynh_hide_warnings ynh_exec_as_app ln -s "apps/nextjs/.next" ".next"
   chown -R "$app:$app" "$install_dir"
 popd
 
