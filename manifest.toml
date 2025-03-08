@@ -49,7 +49,8 @@ ram.runtime = "50M"
     [resources.system_user]
 
     [resources.install_dir]
-
+    dir = "/var/www/homarr"
+    
     [resources.permissions]
     main.url = "/"
 
