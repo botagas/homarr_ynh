@@ -46,9 +46,9 @@ ynh_script_progression "Building the app..."
 
 pushd $install_dir
 # TESTING: Creating database dir to avoid potential perm issues
-  # ynh_hide_warnings ynh_exec_as_app mkdir -p database
+  ynh_hide_warnings ynh_exec_as_app mkdir -p database
 # TESTING: Creating db file to avoid potential perm issues
-  # ynh_hide_warnings ynh_exec_as_app touch database/db.sqlite
+  ynh_hide_warnings ynh_exec_as_app touch database/db.sqlite
   ynh_hide_warnings corepack enable
   ynh_hide_warnings corepack prepare pnpm@latest --activate
   # ynh_hide_warnings corepack use pnpm@latest
